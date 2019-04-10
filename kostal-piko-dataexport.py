@@ -199,7 +199,7 @@ def main():
     print('Process values on {}'.format(time.asctime()))
     current_values = get_data()
     insert_data(current_values)
-    time.sleep(10)
+    time.sleep(30)
 
 if __name__ == '__main__':
   main()
