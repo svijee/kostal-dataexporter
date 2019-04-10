@@ -17,7 +17,7 @@ and exports the data to a PostgreSQL Database.
   * `DB_PASSWORD`
  * Run `python kostal-piko-dataexport.py`
 
-There's also a Docker Image available on [https://hub.docker.com/r/svijee/kostal-dataexporter](Docker Hub).
+There's also a Docker Image available on [Docker Hub](https://hub.docker.com/r/svijee/kostal-dataexporter).
 
 ## Grafana
 
