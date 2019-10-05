@@ -10,6 +10,7 @@ and exports the data to a PostgreSQL Database.
  * Set environment variables with the relevant details
   * `KOSTAL_USERNAME`
   * `KOSTAL_PASSWORD`
+  * `KOSTAL_HOST`
   * `DB_HOST`
   * `DB_PORT`
   * `DB_NAME`
