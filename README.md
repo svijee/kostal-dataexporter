@@ -27,6 +27,9 @@ Grafana Dashboard to display some of the interesting data:
 
 ![My dashboard on a sunny day in Germany](https://raw.githubusercontent.com/svijee/kostal-dataexporter/master/img/grafana-dashboard.png)
 
+You can import the [dashboard.json](dashboard.json) to use it in your Grafana
+instance.
+
 ## Note
 
 This is just a quick-and-dirty script to grab to content of the REST-API of my
