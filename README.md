@@ -25,7 +25,7 @@ There's also a Docker Image available on [Docker Hub](https://hub.docker.com/r/s
 By logging the data with this script it's easily possible to create a nice
 Grafana Dashboard to display some of the interesting data:
 
-![My dashboard on a rainy day in Germany](https://raw.githubusercontent.com/svijee/kostal-dataexporter/master/img/grafana-dashboard.png)
+![My dashboard on a sunny day in Germany](https://raw.githubusercontent.com/svijee/kostal-dataexporter/master/img/grafana-dashboard.png)
 
 ## Note
 
