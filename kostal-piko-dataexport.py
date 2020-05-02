@@ -111,7 +111,7 @@ def get_data():
 
   return current_values
 
-def insert_data(current_values):
+def insert_data_into_postgres(current_values):
   params = {
     "host": os.environ.get('DB_HOST'),
     "port": os.environ.get('DB_PORT'),
@@ -198,7 +198,7 @@ def main():
   while True:
     print('Process values on {}'.format(time.asctime()))
     current_values = get_data()
-    insert_data(current_values)
+    insert_data_into_postgres(current_values)
     time.sleep(30)
 
 if __name__ == '__main__':
