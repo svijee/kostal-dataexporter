@@ -6,7 +6,8 @@ and exports the data either to a PostgreSQL Database and/or InfluxDB.
 
 ## Setup
 
- * Import the `init.sql` into your PostgreSQL Database (only needed when using PostgreSQL)
+ * PostgreSQL: Import the `init.sql` into your Database
+ * InfluxDB: Create Database (eg `pv`)
  * Set environment variables with the relevant details
   * `KOSTAL_USERNAME`
   * `KOSTAL_PASSWORD`

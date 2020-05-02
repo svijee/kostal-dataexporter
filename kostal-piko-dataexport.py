@@ -198,7 +198,7 @@ def insert_data_into_postgres(current_values):
   conn.close()
 
 def insert_data_into_influx(current_values):
-  influx_db_name = "pv"
+  influxdb_name = os.environ.get('INFLUXDB_NAME')
   influxClient = InfluxDBClient(
       host=os.environ.get('INFLUXDB_HOST'),
       port=os.environ.get('INFLUXDB_PORT'),
@@ -244,7 +244,7 @@ def insert_data_into_influx(current_values):
       "stats_day_self_consumption_rate": float(current_values['stats_day_self_consumption_rate']),
       "stats_day_degree_of_self_sufficiency": float(current_values['stats_day_degree_of_self_sufficiency']),
     }
-  }], database='pv')
+  }], database=influxdb_name)
 
 
 def main():
