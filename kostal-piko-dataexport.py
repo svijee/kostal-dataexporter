@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import requests
 import json
 import time
@@ -195,6 +196,11 @@ def insert_data_into_postgres(current_values):
   conn.close()
 
 def main():
+  parser = argparse.ArgumentParser(description='Kostal Dataexporter')
+  parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
+  parser.add_argument('--influx', type=int, default=1, choices=[0, 1])
+  args = parser.parse_args()
+
   while True:
     print('Process values on {}'.format(time.asctime()))
     current_values = get_data()
