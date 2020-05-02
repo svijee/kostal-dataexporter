@@ -6,6 +6,8 @@ import json
 import time
 import psycopg2
 import os
+from datetime import datetime
+from influxdb import InfluxDBClient
 
 data_mapping = {
   'pv_generator_dc_input_1_voltage': 33555202,
@@ -195,6 +197,56 @@ def insert_data_into_postgres(current_values):
   cursor.close()
   conn.close()
 
+def insert_data_into_influx(current_values):
+  influx_db_name = "pv"
+  influxClient = InfluxDBClient(
+      host=os.environ.get('INFLUXDB_HOST'),
+      port=os.environ.get('INFLUXDB_PORT'),
+      username=os.environ.get('INFLUXDB_USER'),
+      password=os.environ.get('INFLUXDB_PASSWORD')
+  )
+
+  current_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+
+  influxClient.write_points([{
+    "measurement": "pvwr",
+    "time": current_time,
+    "fields":  {
+      "pv_generator_dc_input_1_voltage": float(current_values['pv_generator_dc_input_1_voltage']),
+      "pv_generator_dc_input_1_current": float(current_values['pv_generator_dc_input_1_current']),
+      "pv_generator_dc_input_1_power": float(current_values['pv_generator_dc_input_1_power']),
+      "house_home_consumption_covered_by_solar_generator": float(current_values['house_home_consumption_covered_by_solar_generator'] or 0),
+      "house_home_consumption_covered_by_grid": float(current_values['house_home_consumption_covered_by_grid'] or 0),
+      "house_phase_selective_home_consumption_phase_1": float(current_values['house_phase_selective_home_consumption_phase_1']),
+      "house_phase_selective_home_consumption_phase_2": float(current_values['house_phase_selective_home_consumption_phase_2']),
+      "house_phase_selective_home_consumption_phase_3": float(current_values['house_phase_selective_home_consumption_phase_3']),
+      "grid_grid_parameters_output_power": float(current_values['grid_grid_parameters_output_power']),
+      "grid_grid_parameters_grid_frequency": float(current_values['grid_grid_parameters_grid_frequency']),
+      "grid_grid_parameters_cos": float(current_values['grid_grid_parameters_cos']),
+      "grid_phase_1_voltage": float(current_values['grid_phase_1_voltage']),
+      "grid_phase_1_power": float(current_values['grid_phase_1_power']),
+      "grid_phase_1_current": float(current_values['grid_phase_1_current']),
+      "grid_phase_2_voltage": float(current_values['grid_phase_2_voltage']),
+      "grid_phase_2_power": float(current_values['grid_phase_2_power']),
+      "grid_phase_2_current": float(current_values['grid_phase_2_current']),
+      "grid_phase_3_voltage": float(current_values['grid_phase_3_voltage']),
+      "grid_phase_3_power": float(current_values['grid_phase_3_power']),
+      "grid_phase_3_current": float(current_values['grid_phase_3_current']),
+      "stats_total_yield": float(current_values['stats_total_yield']),
+      "stats_total_operation_time": float(current_values['stats_total_operation_time']),
+      "stats_total_total_home_consumption": float(current_values['stats_total_total_home_consumption']),
+      "stats_total_self_consumption_kwh": float(current_values['stats_total_self_consumption_kwh']),
+      "stats_total_self_consumption_rate": float(current_values['stats_total_self_consumption_rate']),
+      "stats_total_degree_of_self_sufficiency": float(current_values['stats_total_degree_of_self_sufficiency']),
+      "stats_day_yield": float(current_values['stats_day_yield']),
+      "stats_day_total_home_consumption": float(current_values['stats_day_total_home_consumption']),
+      "stats_day_self_consumption_kwh": float(current_values['stats_day_self_consumption_kwh']),
+      "stats_day_self_consumption_rate": float(current_values['stats_day_self_consumption_rate']),
+      "stats_day_degree_of_self_sufficiency": float(current_values['stats_day_degree_of_self_sufficiency']),
+    }
+  }], database='pv')
+
+
 def main():
   parser = argparse.ArgumentParser(description='Kostal Dataexporter')
   parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
@@ -204,7 +256,13 @@ def main():
   while True:
     print('Process values on {}'.format(time.asctime()))
     current_values = get_data()
-    insert_data_into_postgres(current_values)
+
+    if args.postgres == 1:
+      insert_data_into_postgres(current_values)
+
+    if args.influx == 1:
+      insert_data_into_influx(current_values)
+
     time.sleep(30)
 
 if __name__ == '__main__':
