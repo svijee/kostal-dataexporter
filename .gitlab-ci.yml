@@ -1,4 +1,4 @@
 variables:
-  TEST_DISABLED: true
+  TEST_DISABLED: "true"
 include:
   - template: Auto-DevOps.gitlab-ci.yml
