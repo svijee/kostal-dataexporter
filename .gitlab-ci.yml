@@ -3,3 +3,8 @@ variables:
   DAST_DISABLED: "true"
 include:
   - template: Auto-DevOps.gitlab-ci.yml
+
+lint_dockerfile:
+  image: hadolint/hadolint:latest-debian
+  script:
+    - hadolint Dockerfile
