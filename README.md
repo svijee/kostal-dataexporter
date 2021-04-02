@@ -21,6 +21,7 @@ and exports the data either to a PostgreSQL Database and/or InfluxDB.
   * For InfluxDB:
     * `INFLUXDB_HOST`
     * `INFLUXDB_PORT`
+    * `INFLUXDB_NAME`
     * `INFLUXDB_USER`
     * `INFLUXDB_PASSWORD`
  * Run `python kostal-piko-dataexport.py`
