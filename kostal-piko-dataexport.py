@@ -9,6 +9,11 @@ import os
 from datetime import datetime
 from influxdb import InfluxDBClient
 
+from influxdb_client import InfluxDBClient as InfluxDB2Client
+from influxdb_client import Point, WritePrecision
+from influxdb_client.client.write_api import SYNCHRONOUS
+
+
 data_mapping = {
   'pv_generator_dc_input_1_voltage': 33555202,
   'pv_generator_dc_input_1_current': 33555201,
@@ -246,11 +251,60 @@ def insert_data_into_influx(current_values):
     }
   }], database=influxdb_name)
 
+def insert_data_into_influx2(current_values):
+  org = os.environ.get('INFLUXDB_ORG')
+  bucket = os.environ.get('INFLUXDB_BUCKET')
+
+  influxClient = InfluxDB2Client(
+    url=os.environ.get('INFLUXDB_URL'),
+    token=os.environ.get('INFLUXDB_TOKEN'),
+  )
+
+  write_api = influxClient.write_api(write_options=SYNCHRONOUS)
+
+  data = (
+    f"pvwr,pvwr=pvwr "
+    f"pv_generator_dc_input_1_voltage={float(current_values['pv_generator_dc_input_1_voltage'])},"
+    f"pv_generator_dc_input_1_current={float(current_values['pv_generator_dc_input_1_current'])},"
+    f"pv_generator_dc_input_1_power={float(current_values['pv_generator_dc_input_1_power'])},"
+    f"house_home_consumption_covered_by_solar_generator={float(current_values['house_home_consumption_covered_by_solar_generator'] or 0)},"
+    f"house_home_consumption_covered_by_grid={float(current_values['house_home_consumption_covered_by_grid'] or 0)},"
+    f"house_phase_selective_home_consumption_phase_1={float(current_values['house_phase_selective_home_consumption_phase_1'])},"
+    f"house_phase_selective_home_consumption_phase_2={float(current_values['house_phase_selective_home_consumption_phase_2'])},"
+    f"house_phase_selective_home_consumption_phase_3={float(current_values['house_phase_selective_home_consumption_phase_3'])},"
+    f"grid_grid_parameters_output_power={float(current_values['grid_grid_parameters_output_power'])},"
+    f"grid_grid_parameters_grid_frequency={float(current_values['grid_grid_parameters_grid_frequency'])},"
+    f"grid_grid_parameters_cos={float(current_values['grid_grid_parameters_cos'])},"
+    f"grid_phase_1_voltage={float(current_values['grid_phase_1_voltage'])},"
+    f"grid_phase_1_power={float(current_values['grid_phase_1_power'])},"
+    f"grid_phase_1_current={float(current_values['grid_phase_1_current'])},"
+    f"grid_phase_2_voltage={float(current_values['grid_phase_2_voltage'])},"
+    f"grid_phase_2_power={float(current_values['grid_phase_2_power'])},"
+    f"grid_phase_2_current={float(current_values['grid_phase_2_current'])},"
+    f"grid_phase_3_voltage={float(current_values['grid_phase_3_voltage'])},"
+    f"grid_phase_3_power={float(current_values['grid_phase_3_power'])},"
+    f"grid_phase_3_current={float(current_values['grid_phase_3_current'])},"
+    f"stats_total_yield={float(current_values['stats_total_yield'])},"
+    f"stats_total_operation_time={float(current_values['stats_total_operation_time'])},"
+    f"stats_total_total_home_consumption={float(current_values['stats_total_total_home_consumption'])},"
+    f"stats_total_self_consumption_kwh={float(current_values['stats_total_self_consumption_kwh'])},"
+    f"stats_total_self_consumption_rate={float(current_values['stats_total_self_consumption_rate'])},"
+    f"stats_total_degree_of_self_sufficiency={float(current_values['stats_total_degree_of_self_sufficiency'])},"
+    f"stats_day_yield={float(current_values['stats_day_yield'])},"
+    f"stats_day_total_home_consumption={float(current_values['stats_day_total_home_consumption'])},"
+    f"stats_day_self_consumption_kwh={float(current_values['stats_day_self_consumption_kwh'])},"
+    f"stats_day_self_consumption_rate={float(current_values['stats_day_self_consumption_rate'])},"
+    f"stats_day_degree_of_self_sufficiency={float(current_values['stats_day_degree_of_self_sufficiency'])}"
+  )
+
+  write_api.write(bucket, org, data)
+
 
 def main():
   parser = argparse.ArgumentParser(description='Kostal Dataexporter')
   parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
-  parser.add_argument('--influx', type=int, default=1, choices=[0, 1])
+  parser.add_argument('--influx', type=int, default=0, choices=[0, 1])
+  parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
   args = parser.parse_args()
 
   while True:
@@ -263,6 +317,8 @@ def main():
     if args.influx == 1:
       insert_data_into_influx(current_values)
 
+    if args.influx2 == 1:
+      insert_data_into_influx2(current_values)
     time.sleep(30)
 
 if __name__ == '__main__':

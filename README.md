@@ -2,7 +2,7 @@
 
 This Python scripts grabs content of the REST API of a [Kostal PIKO
 7.0](https://www.kostal-solar-electric.com/de-de/products/three-phase-inverter/piko-12-20)
-and exports the data either to a PostgreSQL Database and/or InfluxDB.
+and exports the data either to PostgreSQL Database, InfluxDB v1 or InfluxDB v2).
 
 ## Setup
 
@@ -18,14 +18,20 @@ and exports the data either to a PostgreSQL Database and/or InfluxDB.
     * `DB_NAME`
     * `DB_USER`
     * `DB_PASSWORD`
-  * For InfluxDB:
+  * For InfluxDB (1.x):
     * `INFLUXDB_HOST`
     * `INFLUXDB_PORT`
     * `INFLUXDB_NAME`
     * `INFLUXDB_USER`
     * `INFLUXDB_PASSWORD`
+  * For InfluxDB (2.x):
+    * `INFLUXDB_ORG`
+    * `INFLUXDB_BUCKET`
+    * `INFLUXDB_URL`
+    * `INFLUXDB_TOKEN`
  * Run `python kostal-piko-dataexport.py`
-    * `--influx 1` (on, default) or `--influx 0` (off, optional)
+    * `--influx 1` (on, optional) or `--influx 0` (off, optional)
+    * `--influx2 1` (on, default) or `--influx 0` (off, optional)
     * `--postgres 1` (on, optional) or `--postgres 0` (off, default)
 
 There's also a Docker Image available on [Docker Hub](https://hub.docker.com/r/svijee/kostal-dataexporter).
