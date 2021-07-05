@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 
 import argparse
-import requests
 import json
-import time
-import psycopg2
 import os
+import time
 from datetime import datetime
-from influxdb import InfluxDBClient
 
+import psycopg2
+import requests
+from influxdb import InfluxDBClient
 from influxdb_client import InfluxDBClient as InfluxDB2Client
-from influxdb_client import Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
 
