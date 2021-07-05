@@ -73,6 +73,10 @@ def get_data():
 
     response = requests.get(url, auth=auth, params=payload, timeout=5)
     json_data = json.loads(response.text)
+
+    if json_data['status']['code'] != 0:
+      raise RuntimeError('Kostal API returned non zero status code')
+
     for entry in json_data['dxsEntries']:
       entry_name = get_key_by_value(data_mapping, entry['dxsId'])
       current_values[entry_name] = float(entry['value'] or 0)
