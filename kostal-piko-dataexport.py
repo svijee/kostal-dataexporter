@@ -4,6 +4,7 @@ import argparse
 import json
 import os
 import time
+import math
 from datetime import datetime
 
 import psycopg2
@@ -57,64 +58,22 @@ def get_key_by_value(dict_object, search_value):
 
 def get_data():
   url = 'http://{}/api/dxs.json'.format(os.environ.get('KOSTAL_HOST'))
-
-  payload1 = {
-    'dxsEntries': [
-      data_mapping['pv_generator_dc_input_1_voltage'],
-      data_mapping['pv_generator_dc_input_1_current'],
-      data_mapping['pv_generator_dc_input_1_power'],
-      data_mapping['house_home_consumption_covered_by_solar_generator'],
-      data_mapping['house_home_consumption_covered_by_grid'],
-      data_mapping['house_phase_selective_home_consumption_phase_1'],
-      data_mapping['house_phase_selective_home_consumption_phase_2'],
-      data_mapping['house_phase_selective_home_consumption_phase_3'],
-      data_mapping['grid_grid_parameters_output_power'],
-      data_mapping['grid_grid_parameters_grid_frequency'],
-      data_mapping['grid_grid_parameters_cos'],
-      data_mapping['grid_phase_1_voltage'],
-      data_mapping['grid_phase_1_current'],
-      data_mapping['grid_phase_1_power'],
-      data_mapping['grid_phase_2_voltage'],
-      data_mapping['grid_phase_2_current'],
-      data_mapping['grid_phase_2_power'],
-      data_mapping['grid_phase_3_voltage'],
-      data_mapping['grid_phase_3_current'],
-      data_mapping['grid_phase_3_power'],
-    ]
-  }
-
-  # Second payload, because the inverter only returns 25 key-value pairs per request
-  payload2 = {
-    'dxsEntries': [
-      data_mapping['stats_total_yield'],
-      data_mapping['stats_total_operation_time'],
-      data_mapping['stats_total_total_home_consumption'],
-      data_mapping['stats_total_self_consumption_kwh'],
-      data_mapping['stats_total_self_consumption_rate'],
-      data_mapping['stats_total_degree_of_self_sufficiency'],
-      data_mapping['stats_day_yield'],
-      data_mapping['stats_day_total_home_consumption'],
-      data_mapping['stats_day_self_consumption_kwh'],
-      data_mapping['stats_day_self_consumption_rate'],
-      data_mapping['stats_day_degree_of_self_sufficiency'],
-    ]
-  }
-
-  response1 = requests.get(url, auth=(os.environ.get('KOSTAL_USERNAME'), os.environ.get('KOSTAL_PASSWORD')), params=payload1, timeout=5)
-  response2 = requests.get(url, auth=(os.environ.get('KOSTAL_USERNAME'), os.environ.get('KOSTAL_PASSWORD')), params=payload2, timeout=5)
-
-  json_data1 = json.loads(response1.text)
-  json_data2 = json.loads(response2.text)
+  auth = (os.environ.get('KOSTAL_USERNAME'), os.environ.get('KOSTAL_PASSWORD'))
 
   current_values = {}
 
-  for entry in json_data1['dxsEntries']:
-    entry_name = get_key_by_value(data_mapping, entry['dxsId'])
-    current_values[entry_name] = entry['value']
+  query_max_size = 25
+  num_requests = math.ceil(len(list(data_mapping)) / query_max_size)
+  for query_index in range(num_requests):
+    slice_from = query_index * query_max_size
+    slice_to = (query_index + 1) * query_max_size
+    payload = { 'dxsEntries': [data_mapping[k] for k in list(data_mapping)[slice_from:slice_to]] }
 
-  for entry in json_data2['dxsEntries']:
-    entry_name = get_key_by_value(data_mapping, entry['dxsId'])
-    current_values[entry_name] = entry['value']
+    response = requests.get(url, auth=auth, params=payload, timeout=5)
+    json_data = json.loads(response.text)
+    for entry in json_data['dxsEntries']:
+      entry_name = get_key_by_value(data_mapping, entry['dxsId'])
+      current_values[entry_name] = entry['value']
 
   return current_values
 
