@@ -144,19 +144,24 @@ def main():
   parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
   args = parser.parse_args()
 
-  while True:
-    print('Process values on {}'.format(time.asctime()))
-    current_values = get_data()
+  try:
+    while True:
+      print('Process values on {}'.format(time.asctime()))
+      current_values = get_data()
 
-    if args.postgres == 1:
-      insert_data_into_postgres(current_values)
+      if args.postgres == 1:
+        insert_data_into_postgres(current_values)
 
-    if args.influx == 1:
-      insert_data_into_influx(current_values)
+      if args.influx == 1:
+        insert_data_into_influx(current_values)
 
-    if args.influx2 == 1:
-      insert_data_into_influx2(current_values)
-    time.sleep(30)
+      if args.influx2 == 1:
+        insert_data_into_influx2(current_values)
+
+      time.sleep(30)
+  except KeyboardInterrupt:
+    return
+
 
 if __name__ == '__main__':
   main()
