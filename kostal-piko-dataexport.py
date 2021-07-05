@@ -81,6 +81,9 @@ def get_data():
       entry_name = get_key_by_value(data_mapping, entry['dxsId'])
       current_values[entry_name] = float(entry['value'] or 0)
 
+  if len(current_values) != len(data_mapping):
+    raise RuntimeError('Failed to scrape all data fields')
+
   return current_values
 
 
