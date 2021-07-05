@@ -149,6 +149,7 @@ def main():
   parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
   parser.add_argument('--influx', type=int, default=0, choices=[0, 1])
   parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
+  parser.add_argument('--interval', type=int, default=30, help="Scrape interval")
   args = parser.parse_args()
 
   try:
@@ -165,7 +166,7 @@ def main():
       if args.influx2 == 1:
         insert_data_into_influx2(current_values)
 
-      time.sleep(30)
+      time.sleep(args.interval)
   except KeyboardInterrupt:
     return
 
