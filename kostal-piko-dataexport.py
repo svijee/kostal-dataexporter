@@ -6,6 +6,7 @@ import os
 import time
 import math
 from datetime import datetime
+from pprint import pprint
 
 import psycopg2
 import requests
@@ -150,7 +151,12 @@ def main():
   parser.add_argument('--influx', type=int, default=0, choices=[0, 1])
   parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
   parser.add_argument('--interval', type=int, default=30, help="Scrape interval")
+  parser.add_argument('--oneshot', action="store_true", help="Scrape once and print results")
   args = parser.parse_args()
+
+  if args.oneshot:
+    pprint(get_data())
+    exit(0)
 
   try:
     while True:
