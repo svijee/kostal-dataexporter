@@ -34,6 +34,7 @@ and exports the data either to PostgreSQL Database, InfluxDB v1 or InfluxDB v2).
     * `--influx2 1` (on, default) or `--influx 0` (off, optional)
     * `--postgres 1` (on, optional) or `--postgres 0` (off, default)
     * `--interval {seconds}` Scrape interval (default: 30)
+    * `--oneshot` Scrape data, print to stdout and exit
 
 There's also a Docker Image available on [Docker Hub](https://hub.docker.com/r/svijee/kostal-dataexporter).
 
