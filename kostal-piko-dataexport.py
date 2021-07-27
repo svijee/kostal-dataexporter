@@ -59,8 +59,8 @@ def get_key_by_value(dict_object, search_value):
 
 
 def get_data():
-  url = 'http://{}/api/dxs.json'.format(os.environ.get('KOSTAL_HOST'))
-  auth = (os.environ.get('KOSTAL_USERNAME'), os.environ.get('KOSTAL_PASSWORD'))
+  url = 'http://{}/api/dxs.json'.format(os.environ['KOSTAL_HOST'])
+  auth = (os.environ['KOSTAL_USERNAME'], os.environ['KOSTAL_PASSWORD'])
 
   current_values = {}
 
@@ -89,11 +89,11 @@ def get_data():
 
 def insert_data_into_postgres(current_values):
   params = {
-    "host": os.environ.get('DB_HOST'),
-    "port": os.environ.get('DB_PORT'),
-    "database": os.environ.get('DB_NAME'),
-    "user": os.environ.get('DB_USER'),
-    "password": os.environ.get('DB_PASSWORD'),
+    "host": os.environ['DB_HOST'],
+    "port": os.environ['DB_PORT'],
+    "database": os.environ['DB_NAME'],
+    "user": os.environ['DB_USER'],
+    "password": os.environ['DB_PASSWORD'],
   }
 
   conn = psycopg2.connect(**params)
@@ -111,12 +111,12 @@ def insert_data_into_postgres(current_values):
 
 
 def insert_data_into_influx(current_values):
-  influxdb_name = os.environ.get('INFLUXDB_NAME')
+  influxdb_name = os.environ['INFLUXDB_NAME']
   influxClient = InfluxDBClient(
-      host=os.environ.get('INFLUXDB_HOST'),
-      port=os.environ.get('INFLUXDB_PORT'),
-      username=os.environ.get('INFLUXDB_USER'),
-      password=os.environ.get('INFLUXDB_PASSWORD')
+      host=os.environ['INFLUXDB_HOST'],
+      port=os.environ['INFLUXDB_PORT'],
+      username=os.environ['INFLUXDB_USER'],
+      password=os.environ['INFLUXDB_PASSWORD']
   )
 
   current_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -128,12 +128,12 @@ def insert_data_into_influx(current_values):
 
 
 def insert_data_into_influx2(current_values):
-  org = os.environ.get('INFLUXDB_ORG')
-  bucket = os.environ.get('INFLUXDB_BUCKET')
+  org = os.environ['INFLUXDB_ORG']
+  bucket = os.environ['INFLUXDB_BUCKET']
 
   influxClient = InfluxDB2Client(
-    url=os.environ.get('INFLUXDB_URL'),
-    token=os.environ.get('INFLUXDB_TOKEN'),
+    url=os.environ['INFLUXDB_URL'],
+    token=os.environ['INFLUXDB_TOKEN'],
   )
 
   write_api = influxClient.write_api(write_options=SYNCHRONOUS)
