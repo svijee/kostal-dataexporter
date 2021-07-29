@@ -45,8 +45,10 @@ Grafana Dashboard to display some of the interesting data:
 
 ![My dashboard on a sunny day in Germany](https://raw.githubusercontent.com/svijee/kostal-dataexporter/master/img/grafana-dashboard.png)
 
-You can import the [dashboard-postgresql.json](dashboard-postgresql.json) for PostgreSQL and/or [dashboard-influx.json](dashboard-influx.json)
-to use it in your Grafana instance.
+You can import the [dashboard-postgresql.json](dashboard-postgresql.json) for
+PostgreSQL, [dashboard-influx.json](dashboard-influx.json) for influxdb v1 or
+[dashboard-influxdb2.json](dashboard-influxdb2.json) to use it in your Grafana
+instance.
 
 ## Note
 
