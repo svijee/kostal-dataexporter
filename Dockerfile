@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye
+FROM python:3.11.4-slim-bookworm
 
 COPY requirements.txt /
 COPY kostal-piko-dataexport.py /
