@@ -36,7 +36,7 @@ and exports the data either to PostgreSQL Database, InfluxDB v1 or InfluxDB v2).
     * `--interval {seconds}` Scrape interval (default: 30)
     * `--oneshot` Scrape data, print to stdout and exit
 
-There's also a Docker Image available on [Docker Hub](https://hub.docker.com/r/svijee/kostal-dataexporter).
+There's also a Docker Image available on [GitLab's project Container Registry](https://gitlab.com/svij/kostal-dataexporter/container_registry).
 
 ## Grafana
 
