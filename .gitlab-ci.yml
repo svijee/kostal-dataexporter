@@ -4,3 +4,6 @@ variables:
 include:
   - template: Auto-DevOps.gitlab-ci.yml
   - template: Security/SAST-IaC.latest.gitlab-ci.yml
+  - remote: https://gitlab.com/renovate-bot/renovate-runner/-/raw/v24.0.0/templates/renovate.gitlab-ci.yml
+
+
