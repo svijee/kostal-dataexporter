@@ -1,4 +1,4 @@
-FROM python:3.13.1-slim-bookworm
+FROM python:3.13.7-slim-trixie
 
 COPY requirements.txt kostal-piko-dataexport.py /
 
