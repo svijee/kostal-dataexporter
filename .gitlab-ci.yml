@@ -1,9 +1,10 @@
 variables:
-  TEST_DISABLED: "true"
-  DAST_DISABLED: "true"
   KUBERNETES_NODE_SELECTOR_ARCH: 'kubernetes.io/arch=amd64'
 include:
-  - template: Auto-DevOps.gitlab-ci.yml
+  - component: $CI_SERVER_FQDN/components/code-quality-oss/codequality-os-scanners-integration/codequality-oss@1.1.4
+  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.0
+    inputs:
+      build-tool: buildah
   - template: Security/SAST-IaC.latest.gitlab-ci.yml
   - remote: https://gitlab.com/renovate-bot/renovate-runner/-/raw/v24.0.0/templates/renovate.gitlab-ci.yml
 
