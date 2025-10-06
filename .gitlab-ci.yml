@@ -2,8 +2,8 @@ variables:
   KUBERNETES_NODE_SELECTOR_ARCH: 'kubernetes.io/arch=amd64'
   GITLAB_ADVANCED_SAST_ENABLED: 'true'
 include:
-  - component: $CI_SERVER_FQDN/components/code-quality-oss/codequality-os-scanners-integration/codequality-oss@1.1.4
-  - component: $CI_SERVER_FQDN/to-be-continuous/docker/gitlab-ci-docker@8.0.0
+  - component: gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/codequality-oss@1.1.4
+  - component: gitlab.com/to-be-continuous/docker/gitlab-ci-docker@8.0.0
     inputs:
       build-tool: buildah
   - template: Security/SAST-IaC.latest.gitlab-ci.yml
