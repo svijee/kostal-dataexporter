@@ -2,12 +2,9 @@ variables:
   KUBERNETES_NODE_SELECTOR_ARCH: 'kubernetes.io/arch=amd64'
   GITLAB_ADVANCED_SAST_ENABLED: 'true'
 include:
-  - component: gitlab.com/components/code-quality-oss/codequality-os-scanners-integration/codequality-oss@1.1.4
-  - component: gitlab.com/to-be-continuous/docker/gitlab-ci-docker@8.0.0
-    inputs:
-      build-tool: buildah
+  - component: $CI_SERVER_FQDN/guided-explorations/ci-components/kaniko/kaniko@2.5.3
+  - component: $CI_SERVER_FQDN/components/code-quality-oss/codequality-os-scanners-integration/mypy@1.1.4
   - template: Security/SAST-IaC.latest.gitlab-ci.yml
   - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
   - remote: https://gitlab.com/renovate-bot/renovate-runner/-/raw/v24.0.0/templates/renovate.gitlab-ci.yml
-
-
