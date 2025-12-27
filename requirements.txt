@@ -1,3 +1,4 @@
 requests == 2.32.5
 psycopg2-binary == 2.9.11
 influxdb-client == 1.49.0
+clickhouse-driver == 0.2.10

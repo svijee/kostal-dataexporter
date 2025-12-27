@@ -2,12 +2,13 @@
 
 This Python scripts grabs content of the REST API of a [Kostal PIKO
 7.0](https://www.kostal-solar-electric.com/de-de/products/three-phase-inverter/piko-12-20)
-and exports the data either to PostgreSQL or InfluxDB v2).
+and exports the data either to PostgreSQL, ClickHouse or InfluxDB v2).
 
 ## Setup
 
  * PostgreSQL: Import the `init.sql` into your Database
- * InfluxDB: Create Database (eg `pv`)
+ * ClickHouse: Create Database `pvwr`
+ * InfluxDB: Create Database `pvwr`
  * Set environment variables with the relevant details
   * `KOSTAL_USERNAME`
   * `KOSTAL_PASSWORD`
@@ -18,6 +19,12 @@ and exports the data either to PostgreSQL or InfluxDB v2).
     * `DB_NAME`
     * `DB_USER`
     * `DB_PASSWORD`
+  * For ClickHouse:
+    * `CLICKHOUSE_HOST`
+    * `CLICKHOUSE_PORT`
+    * `CLICKHOUSE_USER`
+    * `CLICKHOUSE_PASSWORD`
+    * `CLICKHOUSE_DATABASE`
   * For InfluxDB (2.x):
     * `INFLUXDB_ORG`
     * `INFLUXDB_BUCKET`
@@ -26,6 +33,7 @@ and exports the data either to PostgreSQL or InfluxDB v2).
  * Run `python kostal-piko-dataexport.py`
     * `--influx2 1` (on, default) or `--influx 0` (off, optional)
     * `--postgres 1` (on, optional) or `--postgres 0` (off, default)
+    * `--clickhouse 1` (on, optional) or `--clickhouse 0` (off, default)
     * `--interval {seconds}` Scrape interval (default: 30)
     * `--oneshot` Scrape data, print to stdout and exit
 

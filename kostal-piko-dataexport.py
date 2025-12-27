@@ -12,6 +12,7 @@ import psycopg2
 import requests
 from influxdb_client import InfluxDBClient as InfluxDB2Client
 from influxdb_client.client.write_api import SYNCHRONOUS
+from clickhouse_driver import Client
 
 
 data_mapping = {
@@ -110,6 +111,31 @@ def insert_data_into_postgres(current_values):
   conn.close()
 
 
+def insert_data_into_clickhouse(current_values):
+  client = Client(
+    host=os.environ['CLICKHOUSE_HOST'],
+    port=os.environ['CLICKHOUSE_PORT'],
+    user=os.environ['CLICKHOUSE_USER'],
+    password=os.environ['CLICKHOUSE_PASSWORD'],
+    database=os.environ['CLICKHOUSE_DATABASE']
+  )
+
+  # Prepare data for insertion
+  data = []
+  for key, value in current_values.items():
+    data.append({
+      'timestamp': datetime.utcnow(),
+      'metric': key,
+      'value': value
+    })
+
+  # Insert data into ClickHouse table
+  client.execute(
+    'INSERT INTO pvwr (timestamp, metric, value) VALUES',
+    data
+  )
+
+
 def insert_data_into_influx2(current_values):
   org = os.environ['INFLUXDB_ORG']
   bucket = os.environ['INFLUXDB_BUCKET']
@@ -130,10 +156,17 @@ def insert_data_into_influx2(current_values):
 def main():
   parser = argparse.ArgumentParser(description='Kostal Dataexporter')
   parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
+  parser.add_argument('--clickhouse', type=int, default=0, choices=[0, 1])
   parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
   parser.add_argument('--interval', type=int, default=30, help="Scrape interval")
   parser.add_argument('--oneshot', action="store_true", help="Scrape once and print results")
   args = parser.parse_args()
+
+  # Validate required environment variables for Kostal API
+  required_vars = ['KOSTAL_HOST', 'KOSTAL_USERNAME', 'KOSTAL_PASSWORD']
+  for var in required_vars:
+    if var not in os.environ:
+      raise ValueError(f"Environment variable {var} is not set")
 
   if args.oneshot:
     pprint(get_data())
@@ -146,6 +179,9 @@ def main():
 
       if args.postgres == 1:
         insert_data_into_postgres(current_values)
+
+      if args.clickhouse == 1:
+        insert_data_into_clickhouse(current_values)
 
       if args.influx2 == 1:
         insert_data_into_influx2(current_values)
