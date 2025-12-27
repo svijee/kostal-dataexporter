@@ -10,7 +10,6 @@ from pprint import pprint
 
 import psycopg2
 import requests
-from influxdb import InfluxDBClient
 from influxdb_client import InfluxDBClient as InfluxDB2Client
 from influxdb_client.client.write_api import SYNCHRONOUS
 
@@ -111,23 +110,6 @@ def insert_data_into_postgres(current_values):
   conn.close()
 
 
-def insert_data_into_influx(current_values):
-  influxdb_name = os.environ['INFLUXDB_NAME']
-  influxClient = InfluxDBClient(
-      host=os.environ['INFLUXDB_HOST'],
-      port=os.environ['INFLUXDB_PORT'],
-      username=os.environ['INFLUXDB_USER'],
-      password=os.environ['INFLUXDB_PASSWORD']
-  )
-
-  current_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-
-  influxClient.write_points(
-    [{ "measurement": "pvwr", "time": current_time, "fields": current_values }],
-    database=influxdb_name
-  )
-
-
 def insert_data_into_influx2(current_values):
   org = os.environ['INFLUXDB_ORG']
   bucket = os.environ['INFLUXDB_BUCKET']
@@ -148,7 +130,6 @@ def insert_data_into_influx2(current_values):
 def main():
   parser = argparse.ArgumentParser(description='Kostal Dataexporter')
   parser.add_argument('--postgres', type=int, default=0, choices=[0, 1])
-  parser.add_argument('--influx', type=int, default=0, choices=[0, 1])
   parser.add_argument('--influx2', type=int, default=1, choices=[0, 1])
   parser.add_argument('--interval', type=int, default=30, help="Scrape interval")
   parser.add_argument('--oneshot', action="store_true", help="Scrape once and print results")
@@ -165,9 +146,6 @@ def main():
 
       if args.postgres == 1:
         insert_data_into_postgres(current_values)
-
-      if args.influx == 1:
-        insert_data_into_influx(current_values)
 
       if args.influx2 == 1:
         insert_data_into_influx2(current_values)
