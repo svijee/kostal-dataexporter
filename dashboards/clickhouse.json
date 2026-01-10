@@ -1,0 +1,4002 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2beta1",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "adb8kjc",
+    "generation": 14,
+    "creationTimestamp": "2025-12-27T13:38:16Z",
+    "labels": {},
+    "annotations": {}
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "builtIn": true,
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "query": {
+            "group": "grafana",
+            "kind": "DataQuery",
+            "spec": {
+              "limit": 100,
+              "matchAny": false,
+              "tags": [],
+              "type": "dashboard"
+            },
+            "version": "v0"
+          }
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-10": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_total_home_consumption"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_total_home_consumption' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 10,
+          "links": [],
+          "title": "Total Home Consumption",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-16": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "house_home_consumption_covered_by_solar_generator"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "dir": "ASC",
+                              "name": "timestamp"
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'house_home_consumption_covered_by_solar_generator' ) ORDER BY timestamp ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "house_home_consumption_covered_by_grid"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'house_home_consumption_covered_by_grid' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 16,
+          "links": [],
+          "title": "Power Consumption",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 75,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "normal"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "max": 9000,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "watt"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "A value house_home_consumption_covered_by_solar_generator"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "By Solar"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "B value house_home_consumption_covered_by_grid"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "By Grid"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "max"
+                  ],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-18": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_day_yield"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_day_yield' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 18,
+          "links": [],
+          "title": "Total Yield (Today)",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "watth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_yield"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_yield' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 2,
+          "links": [],
+          "title": "Total produced kWh",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-20": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_day_total_home_consumption"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_day_total_home_consumption' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 20,
+          "links": [],
+          "title": "Home Consumption (Today)",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "watth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-22": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_day_self_consumption_kwh"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_day_self_consumption_kwh' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 22,
+          "links": [],
+          "title": "Self Consumption (Today)",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "watth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-24": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_day_self_consumption_rate"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_day_self_consumption_rate' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 24,
+          "links": [],
+          "title": "Self Consumption Rate (Today)",
+          "transparent": true,
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "max": 100,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      },
+                      {
+                        "color": "rgba(237, 129, 40, 0.89)",
+                        "value": 50
+                      },
+                      {
+                        "color": "#299c46",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {}
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-26": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_day_degree_of_self_sufficiency"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_day_degree_of_self_sufficiency' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 26,
+          "links": [],
+          "title": "Degree Of Self Sufficiency (Today)",
+          "transparent": true,
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "max": 100,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      },
+                      {
+                        "color": "rgba(237, 129, 40, 0.89)",
+                        "value": 50
+                      },
+                      {
+                        "color": "#299c46",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "none"
+                },
+                "overrides": []
+              },
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {}
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-28": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "pv_generator_dc_input_1_power"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'pv_generator_dc_input_1_power' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": true,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "house_home_consumption_covered_by_solar_generator"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'house_home_consumption_covered_by_solar_generator' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "__expr__",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "expression": "$A - $B",
+                        "type": "math"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "C"
+                  }
+                }
+              ],
+              "queryOptions": {},
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 28,
+          "links": [],
+          "title": "Power Input/Output",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "line",
+                    "fillOpacity": 75,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": false,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "max": 7000,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "watt"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "value pv_generator_dc_input_1_power"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Power Feed In"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "C"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Grid Feed In"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "legend": {
+                  "calcs": [
+                    "lastNotNull",
+                    "max"
+                  ],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "multi",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-30": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [
+                            {
+                              "aggregateType": "count",
+                              "alias": "",
+                              "column": "metric"
+                            }
+                          ],
+                          "columns": [
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 1000,
+                          "meta": {},
+                          "mode": "trend",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "sql",
+                        "format": 0,
+                        "meta": {
+                          "builderOptions": {
+                            "aggregates": [
+                              {
+                                "aggregateType": "count",
+                                "alias": "",
+                                "column": "metric"
+                              }
+                            ],
+                            "columns": [
+                              {
+                                "hint": "time",
+                                "name": "timestamp",
+                                "type": "DateTime"
+                              }
+                            ],
+                            "database": "pvwr",
+                            "filters": [
+                              {
+                                "condition": "AND",
+                                "filterType": "custom",
+                                "hint": "time",
+                                "key": "",
+                                "operator": "WITH IN DASHBOARD TIME RANGE",
+                                "type": "datetime"
+                              }
+                            ],
+                            "groupBy": [],
+                            "limit": 1000,
+                            "meta": {},
+                            "mode": "trend",
+                            "orderBy": [
+                              {
+                                "default": true,
+                                "dir": "ASC",
+                                "hint": "time",
+                                "name": ""
+                              }
+                            ],
+                            "queryType": "timeseries",
+                            "table": "pvwr"
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "timeseries",
+                        "rawSql": "SELECT\n    toDate(timestamp) AS day,\n    max(value) - min(value) AS daily_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_yield'\nGROUP BY day\nORDER BY day"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [
+                            {
+                              "aggregateType": "count",
+                              "alias": "",
+                              "column": "metric"
+                            }
+                          ],
+                          "columns": [
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 1000,
+                          "meta": {},
+                          "mode": "trend",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "sql",
+                        "format": 0,
+                        "meta": {
+                          "builderOptions": {
+                            "aggregates": [
+                              {
+                                "aggregateType": "count",
+                                "alias": "",
+                                "column": "metric"
+                              }
+                            ],
+                            "columns": [
+                              {
+                                "hint": "time",
+                                "name": "timestamp",
+                                "type": "DateTime"
+                              }
+                            ],
+                            "database": "pvwr",
+                            "filters": [
+                              {
+                                "condition": "AND",
+                                "filterType": "custom",
+                                "hint": "time",
+                                "key": "",
+                                "operator": "WITH IN DASHBOARD TIME RANGE",
+                                "type": "datetime"
+                              }
+                            ],
+                            "groupBy": [],
+                            "limit": 1000,
+                            "meta": {},
+                            "mode": "trend",
+                            "orderBy": [
+                              {
+                                "default": true,
+                                "dir": "ASC",
+                                "hint": "time",
+                                "name": ""
+                              }
+                            ],
+                            "queryType": "timeseries",
+                            "table": "pvwr"
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "timeseries",
+                        "rawSql": "SELECT\n    toDate(timestamp) AS day,\n    max(value) - min(value) AS daily_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_self_consumption_kwh'\nGROUP BY day\nORDER BY day"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 30,
+          "links": [],
+          "title": "Daily Power",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "A daily_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Production"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "B daily_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Consumption"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-31": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toDate(timestamp) AS day,\n    max(value) - min(value) AS daily_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_total_home_consumption'\nGROUP BY day\nORDER BY day"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 31,
+          "links": [],
+          "title": "Daily Home Consumption",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "daily_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#f2cc0c",
+                          "mode": "fixed"
+                        }
+                      },
+                      {
+                        "id": "displayName",
+                        "value": "kWh per day"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-32": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfWeek(timestamp) AS week,\n    max(value) - min(value) AS weekly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_yield'\nGROUP BY week\nORDER BY week"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfWeek(timestamp) AS week,\n    max(value) - min(value) AS weekly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_self_consumption_kwh'\nGROUP BY week\nORDER BY week"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 32,
+          "links": [],
+          "title": "Weekly Power",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 6,
+                    "pointSize": 8,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "A weekly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Production"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "B weekly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Consumption"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-33": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfWeek(timestamp) AS week,\n    max(value) - min(value) AS weekly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_total_home_consumption'\nGROUP BY week\nORDER BY week"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 33,
+          "links": [],
+          "title": "Weekly Home Consumption",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "axisSoftMin": 0,
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 4,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "weekly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#f2cc0c",
+                          "mode": "fixed"
+                        }
+                      },
+                      {
+                        "id": "displayName",
+                        "value": "kWh per week"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-35": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfMonth(timestamp) AS month,\n    max(value) - min(value) AS monthly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_self_consumption_kwh'\nGROUP BY month\nORDER BY month"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 35,
+          "links": [],
+          "title": "Monthly Home Consumption",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "axisSoftMin": 0,
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 10,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "monthly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#f2cc0c",
+                          "mode": "fixed"
+                        }
+                      },
+                      {
+                        "id": "displayName",
+                        "value": "kWh per month"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-36": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfMonth(timestamp) AS month,\n    max(value) - min(value) AS monthly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_yield'\nGROUP BY month\nORDER BY month"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfMonth(timestamp) AS month,\n    max(value) - min(value) AS monthly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 1 YEAR\n    AND metric = 'stats_total_self_consumption_kwh'\nGROUP BY month\nORDER BY month"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "1y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 36,
+          "links": [],
+          "title": "Monthly Power",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 10,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "A monthly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Production"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "B monthly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Consumption"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-37": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfYear(timestamp) AS year,\n    max(value) - min(value) AS yearly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 8 YEAR\n    AND metric = 'stats_total_yield'\nGROUP BY year\nORDER BY year"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                },
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfYear(timestamp) AS year,\n    max(value) - min(value) AS yearly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 8 YEAR\n    AND metric = 'stats_total_self_consumption_kwh'\nGROUP BY year\nORDER BY year"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "B"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "8y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 37,
+          "links": [],
+          "title": "Yearly Power",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 10,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "A yearly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Production"
+                      }
+                    ]
+                  },
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "B yearly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "displayName",
+                        "value": "Consumption"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-38": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "editorType": "sql",
+                        "format": 1,
+                        "meta": {
+                          "builderOptions": {
+                            "columns": [],
+                            "database": "",
+                            "limit": 1000,
+                            "mode": "list",
+                            "queryType": "table",
+                            "table": ""
+                          }
+                        },
+                        "pluginVersion": "4.11.4",
+                        "queryType": "table",
+                        "rawSql": "SELECT\n    toStartOfYear(timestamp) AS year,\n    max(value) - min(value) AS yearly_yield_change\nFROM pvwr.pvwr\nWHERE $__timeFilter(timestamp)\n    AND timestamp >= now() - INTERVAL 8 YEAR\n    AND metric = 'stats_total_total_home_consumption'\nGROUP BY year\nORDER BY year"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "timeFrom": "8y"
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 38,
+          "links": [],
+          "title": "Monthly Home Consumption",
+          "vizConfig": {
+            "group": "timeseries",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "barWidthFactor": 0.6,
+                    "drawStyle": "bars",
+                    "fillOpacity": 100,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "graph": false,
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "insertNulls": false,
+                    "lineInterpolation": "linear",
+                    "lineWidth": 10,
+                    "pointSize": 5,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "showValues": false,
+                    "spanNulls": true,
+                    "stacking": {
+                      "group": "A",
+                      "mode": "none"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  },
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      },
+                      {
+                        "color": "red",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": [
+                  {
+                    "matcher": {
+                      "id": "byName",
+                      "options": "yearly_yield_change"
+                    },
+                    "properties": [
+                      {
+                        "id": "color",
+                        "value": {
+                          "fixedColor": "#f2cc0c",
+                          "mode": "fixed"
+                        }
+                      },
+                      {
+                        "id": "displayName",
+                        "value": "kWh per year"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "options": {
+                "graph": {},
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": true
+                },
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                }
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_operation_time"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_operation_time' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 4,
+          "links": [],
+          "title": "Total Operation Time",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "h"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {
+                  "titleSize": 1
+                },
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-5": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_self_consumption_kwh"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_self_consumption_kwh' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 5,
+          "links": [],
+          "title": "Total self consumption",
+          "transparent": true,
+          "vizConfig": {
+            "group": "stat",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "kwatth"
+                },
+                "overrides": []
+              },
+              "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                  "calcs": [
+                    "mean"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showPercentChange": false,
+                "text": {},
+                "textMode": "auto",
+                "wideLayout": true
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-7": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_self_consumption_rate"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_self_consumption_rate' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 7,
+          "links": [],
+          "title": "Total self consumption rate",
+          "transparent": true,
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "max": 100,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "green",
+                        "value": 0
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {}
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      },
+      "panel-8": {
+        "kind": "Panel",
+        "spec": {
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "hidden": false,
+                    "query": {
+                      "group": "grafana-clickhouse-datasource",
+                      "kind": "DataQuery",
+                      "spec": {
+                        "builderOptions": {
+                          "aggregates": [],
+                          "columns": [
+                            {
+                              "alias": "timestamp",
+                              "custom": false,
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            },
+                            {
+                              "alias": "metric",
+                              "custom": false,
+                              "name": "metric",
+                              "type": "String"
+                            },
+                            {
+                              "alias": "value",
+                              "custom": false,
+                              "name": "value",
+                              "type": "Float64"
+                            },
+                            {
+                              "hint": "time",
+                              "name": "timestamp",
+                              "type": "DateTime"
+                            }
+                          ],
+                          "database": "pvwr",
+                          "filters": [
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "hint": "time",
+                              "key": "",
+                              "operator": "WITH IN DASHBOARD TIME RANGE",
+                              "type": "datetime"
+                            },
+                            {
+                              "condition": "AND",
+                              "filterType": "custom",
+                              "key": "metric",
+                              "label": "metric",
+                              "operator": "=",
+                              "type": "String",
+                              "value": "stats_total_degree_of_self_sufficiency"
+                            }
+                          ],
+                          "groupBy": [],
+                          "limit": 0,
+                          "meta": {},
+                          "mode": "aggregate",
+                          "orderBy": [
+                            {
+                              "default": true,
+                              "dir": "ASC",
+                              "hint": "time",
+                              "name": ""
+                            }
+                          ],
+                          "queryType": "timeseries",
+                          "table": "pvwr"
+                        },
+                        "editorType": "builder",
+                        "format": 0,
+                        "pluginVersion": "4.11.4",
+                        "rawSql": "SELECT timestamp as \"time\", timestamp, metric, value FROM \"pvwr\".\"pvwr\" WHERE ( time >= $__fromTime AND time <= $__toTime ) AND ( metric = 'stats_total_degree_of_self_sufficiency' ) ORDER BY time ASC"
+                      },
+                      "version": "v0"
+                    },
+                    "refId": "A"
+                  }
+                }
+              ],
+              "queryOptions": {
+                "maxDataPoints": 100
+              },
+              "transformations": []
+            }
+          },
+          "description": "",
+          "id": 8,
+          "links": [],
+          "title": "Total degree of self sufficiency",
+          "transparent": true,
+          "vizConfig": {
+            "group": "gauge",
+            "kind": "VizConfig",
+            "spec": {
+              "fieldConfig": {
+                "defaults": {
+                  "color": {
+                    "mode": "thresholds"
+                  },
+                  "max": 100,
+                  "min": 0,
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "color": "#d44a3a",
+                        "value": 0
+                      },
+                      {
+                        "color": "rgba(237, 129, 40, 0.89)",
+                        "value": 50
+                      },
+                      {
+                        "color": "#299c46",
+                        "value": 80
+                      }
+                    ]
+                  },
+                  "unit": "percent"
+                },
+                "overrides": []
+              },
+              "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "horizontal",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {}
+              }
+            },
+            "version": "12.3.1"
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 4,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-5"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 8,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-7"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 12,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-8"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 16,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-10"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 20,
+              "y": 0
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-28"
+              },
+              "height": 15,
+              "width": 12,
+              "x": 0,
+              "y": 4
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-16"
+              },
+              "height": 15,
+              "width": 12,
+              "x": 12,
+              "y": 4
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-18"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 2,
+              "y": 19
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-20"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 6,
+              "y": 19
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-22"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 10,
+              "y": 19
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-24"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 14,
+              "y": 19
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-26"
+              },
+              "height": 4,
+              "width": 4,
+              "x": 18,
+              "y": 19
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-30"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 0,
+              "y": 23
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-31"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 12,
+              "y": 23
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-32"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 0,
+              "y": 33
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-33"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 12,
+              "y": 33
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-36"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 0,
+              "y": 43
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-35"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 12,
+              "y": 43
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-37"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 0,
+              "y": 53
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-38"
+              },
+              "height": 10,
+              "width": 12,
+              "x": 12,
+              "y": 53
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "fiscalYearStartMonth": 0,
+      "from": "now/d+5h",
+      "hideTimepicker": false,
+      "timezone": "",
+      "to": "now"
+    },
+    "title": "Photovoltaik (Clickhouse)",
+    "variables": []
+  },
+  "status": {}
+}
